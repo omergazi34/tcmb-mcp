@@ -1,0 +1,26 @@
+name: Live TCMB check
+
+# Runs the built server over stdio against the real tcmb.gov.tr once a week, so a change in TCMB's
+# feed format shows up here before users notice. Mondays 16:00 Istanbul, after the 15:30 bulletin.
+on:
+  schedule:
+    - cron: "0 13 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx vitest run test/live.test.ts
+        env:
+          TCMB_LIVE: "1"
