@@ -1,0 +1,62 @@
+{
+  "name": "tcmb-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that gives AI assistants the official Central Bank of the Republic of Türkiye (TCMB) exchange rates: daily rates, historical series and currency conversion.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "tcmb",
+    "exchange-rates",
+    "turkish-lira",
+    "claude",
+    "ai-tools"
+  ],
+  "license": "MIT",
+  "author": "omergazi34",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omergazi34/tcmb-mcp.git"
+  },
+  "type": "module",
+  "bin": {
+    "tcmb-mcp": "dist/index.js"
+  },
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "node --watch --experimental-strip-types src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "fast-xml-parser": "^5.11.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "@vitest/coverage-v8": "^5.0.4",
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.4"
+  }
+}
