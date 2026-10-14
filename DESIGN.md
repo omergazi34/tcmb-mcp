@@ -76,7 +76,7 @@ Other 4xx fail immediately. Every request has a timeout (`AbortSignal.timeout`).
   `InMemoryTransport`: tool discovery, annotations, output schemas, `isError` results, input
   validation, resources and prompts. This is the same path a host takes.
 - **Live check.** `test/live.test.ts` spawns the _built_ server over stdio and calls the real
-  feed. It's skipped by default and run weekly in CI, so a TCMB format change is caught early.
+  feed. It's skipped by default and scheduled weekly in `live.yml`, so a TCMB format change is caught early.
 - **Injected clock.** The client takes `now()`, so "before 15:30", "holiday" and "future date" cases
   are deterministic.
 

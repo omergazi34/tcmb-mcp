@@ -1,7 +1,5 @@
 # tcmb-mcp
 
-[![CI](https://github.com/omergazi34/tcmb-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/omergazi34/tcmb-mcp/actions/workflows/ci.yml)
-[![Live TCMB check](https://github.com/omergazi34/tcmb-mcp/actions/workflows/live.yml/badge.svg)](https://github.com/omergazi34/tcmb-mcp/actions/workflows/live.yml)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
 ![Coverage](https://img.shields.io/badge/coverage-98%25-brightgreen)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -118,8 +116,8 @@ TCMB_LIVE=1 npx vitest run test/live.test.ts   # end-to-end over stdio against t
 
 Unit tests run against a **real bulletin** saved from tcmb.gov.tr (`test/fixtures/13102026.xml`).
 A fake TCMB site serves it under any date and returns 404s, 5xx and network errors on demand. MCP
-behaviour is tested with the SDK's own `Client` over an in-memory transport. A weekly CI job runs
-the built server against the live feed.
+behaviour is tested with the SDK's own `Client` over an in-memory transport. The live test runs
+the built server over stdio against the real feed; `live.yml` schedules it weekly.
 
 ## Disclaimer
 
